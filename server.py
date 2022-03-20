@@ -80,7 +80,6 @@ def get_all_users_descending():
 @app.route("/user/<user_id>", methods=["GET"])
 def get_one_user(user_id):
     users = User.query.all()
-
     all_users_ll = linked_list.linked_list()
 
     for user in users:
@@ -97,6 +96,13 @@ def get_one_user(user_id):
     user = all_users_ll.get_user_by_id(user_id)
     return jsonify(user), 200
 
+
+@app.route("/user/<user_id>", methods=["DELETE"])
+def delete_one_user(user_id):
+    user = User.query.filter_by(id=user_id).first()
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify({}) , 200
 
 
 

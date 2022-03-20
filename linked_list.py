@@ -58,7 +58,7 @@ class linked_list:
             if node.data["id"] == int(id):
                 return node.data
             node = node.next_node
-        return None
+        return "User does not exist"
 
 
 
